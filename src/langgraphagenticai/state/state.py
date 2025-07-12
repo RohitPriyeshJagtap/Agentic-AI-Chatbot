@@ -1,11 +1,8 @@
-from typing_extensions import TypedDict,List
-from langgraph.graph.message import add_messages
+from typing_extensions import TypedDict
 from typing import Annotated
+from langgraph.graph.message import add_messages
+from langchain_core.messages import AnyMessage
 
 class State(TypedDict):
-    """
-    Represents the structure of the state used in graph
-    
-    """
-    message: Annotated[List,add_messages]
-
+    """State with message history that appends new chat messages."""
+    messages: Annotated[list[AnyMessage], add_messages]
